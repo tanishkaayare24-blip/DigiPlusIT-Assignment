@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: contextrelay
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: AI_PROVIDER
+        value: anthropic
+      - key: AI_MODEL
+        value: claude-opus-5-5
+      - key: AI_API_KEY
+        sync: false   # set the secret in the Render dashboard
+      - key: AI_TIMEOUT_SECONDS
+        value: "20"
+      - key: LOG_LEVEL
+        value: INFO

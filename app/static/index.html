@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ContextRelay</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .spinner { border: 2px solid #cbd5e1; border-top-color: #4f46e5; border-radius: 9999px; width: 14px; height: 14px;
+               display: inline-block; animation: spin .7s linear infinite; vertical-align: -2px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+  <div id="ai-banner" class="hidden bg-amber-100 border-b border-amber-300 text-amber-900 text-sm px-4 py-2 text-center">
+    <strong>AI unavailable - basic mode.</strong> <span id="ai-banner-reason"></span>
+    Suggestions use simple rules until the AI is back.
+  </div>
+
+  <header class="bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center gap-3">
+      <a href="#/" class="flex items-center gap-2 font-bold text-lg text-indigo-700">
+        <span class="inline-flex w-8 h-8 rounded-lg bg-indigo-600 text-white items-center justify-center text-sm">CR</span>
+        ContextRelay
+      </a>
+      <nav class="flex gap-1 text-sm" id="nav">
+        <a href="#/" data-nav="dashboard" class="px-3 py-1.5 rounded-lg hover:bg-slate-100">Dashboard</a>
+        <a href="#/meetings" data-nav="meetings" class="px-3 py-1.5 rounded-lg hover:bg-slate-100">Meetings</a>
+        <a href="#/items" data-nav="items" class="px-3 py-1.5 rounded-lg hover:bg-slate-100">Action items</a>
+        <a href="#/kb" data-nav="kb" class="px-3 py-1.5 rounded-lg hover:bg-slate-100">Knowledge base</a>
+      </nav>
+      <div class="ml-auto flex items-center gap-2 text-sm">
+        <label for="viewer" class="text-slate-500">Viewing as</label>
+        <select id="viewer" class="border border-slate-300 rounded-lg px-2 py-1 bg-white"></select>
+        <span id="ai-pill" class="px-2 py-1 rounded-full text-xs bg-slate-100 text-slate-600">AI: ...</span>
+        <button id="reset-demo" class="px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-100">Reset demo data</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="view" class="max-w-7xl mx-auto px-4 py-6"></main>
+
+  <div id="modal" class="hidden fixed inset-0 bg-slate-900/40 z-40 flex items-start justify-center overflow-y-auto p-4">
+    <div class="bg-white rounded-xl shadow-xl w-full max-w-2xl mt-10 mb-10">
+      <div class="flex items-center justify-between border-b px-5 py-3">
+        <h3 id="modal-title" class="font-semibold"></h3>
+        <button id="modal-close" class="text-slate-400 hover:text-slate-700 text-xl leading-none" aria-label="Close">&times;</button>
+      </div>
+      <div id="modal-body" class="p-5"></div>
+    </div>
+  </div>
+
+  <div id="toasts" class="fixed bottom-4 right-4 z-50 space-y-2 w-80"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
